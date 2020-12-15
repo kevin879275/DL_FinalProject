@@ -1,9 +1,18 @@
-- 2個 features (report, breed)
+## sklearn mlpregressor
+- 2個 csv (report, breed)
 (32, 16) 6.37
 
-- 3個 features (report, breed, birth)
+- 3個 csv (report, breed, birth)
 (32,32) 6.14
 (32,16) 6.08
 (16,16) 6.13
 (32,16,8) 6.37
 (32, 16) 6.16 體重fill_mean
+
+- 4個
+(32,16)   spec只有狀況類別one-hot
+
+
+## pytorch 
+- 4個
+8.87
