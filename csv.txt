@@ -12,6 +12,14 @@
 - 4個
 (32,16)   spec只有狀況類別one-hot
 
+全部標準正規化 + 全部OHE + Fillna 泌乳天數，牛體重 填平均
+- 3個csv (report, birth, breed)
+   250 epoch (32,16) 6.30
+   250 epoch (16,16) 6.15
+- 2個csv (report, birth)
+  350 epoch (32,16) 6.09
+  350 epoch (16,16) 6.00
+  350 epoch (16,16), valid=0.01 5.97
 
 ## pytorch 
 - 4個
