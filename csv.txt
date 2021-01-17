@@ -12,6 +12,7 @@
 - 4個
 (32,16)   spec只有狀況類別one-hot
 
+
 全部標準正規化 + 全部OHE + Fillna 泌乳天數，牛體重 填平均
 - 3個csv (report, birth, breed) test fill -1
    250 epoch (32,16) 6.30
@@ -40,22 +41,56 @@
    (16,16,16) 6.06
 
 - 2個csv (report, birth) del 月齡
-  valid=0.1 (16,16) 5.90
-  valid=0   (16,16) 6.06
-  valid=0.01 (16,16) 6.04
+  (16,16) 5.90
+  (16,16) 6.06
+  (16,16) 6.04
+  xgb 6.11
+
+- 2個csv (report, birth) del 月齡 add 父親
+  xgb 5.94
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號
+  xgb 5.79
+
 
 - 2個csv (report, birth) del 月齡,農場代號
   vaild=0.1 (16,16) 6.01
 - 2個csv (report, birth) del 月齡,農場代號,月份
   vaild=0.1 (16,16) 6.02
 
-
 - 2個csv (report, birth) del 月齡 add 不健康
   valid=0.1 (16,16) 6.01 6.02 5.99
-  valid=0.1 (16,16) (rs=0)5.96 (rs=2) 5.96
+  valid=0.1 (16,16) (rs=0)5.96 (rs=2) 5.92
   valid=0.1 rs = 42 (16,16) 6.01
   valid=0.01 (16,16) 5.96 5.99
   valid=0 (16,16) 5.94 6.0 5.97
+  
+  svr 6.20
+
+- 同上 資料月份OHE 8萬 21 胎次不normal del 月齡 add 不健康
+  (16,16) 5.94 5.92 5.98 5.98
+  xgb 6.10
+
+- 同上 資料月份OHE 8萬 21 胎次不normal del 月齡 add 不健康, 序列號
+  (16,16) 5.99
+
+- 同上 資料月份OHE 8萬 21 胎次不normal del 月齡, 配種次數 add 不健康
+  (16,16) 5.94 6.01
+
+- 同上 資料月份OHE 8萬 21 胎次不normal del 月齡, 分娩難易度 add 不健康
+  (16,16) 5.99
+
+- 同上 資料月份OHE 8萬 21 胎次、配種次數不normal del 月齡, 分娩難易度 add 不健康
+  (16,16) 6.08
+
+- 同上 資料月份OHE 8萬 21 胎次、分娩不normal del 月齡, 配種次數 add 不健康
+  (16,16) 5.95 5.98 5.95
+
+- 同上 資料月份OHE 8萬 21 胎次不normal del 月齡, 配種次數, 分娩難易度 add 不健康
+  (16,16) 6.01
+
+- 2個csv (report, birth) add 不健康
+  rs=2 (16,16) 5.98
+  (16,16) 6.03
 
 - 同上 資料月份OHE 8萬 22
   valid=0.01 (16,16) 5.955 6.01 6.01
@@ -75,6 +110,7 @@ early (16,16) 6.04 6.06 6.04
   keras (16,16,1) 6.04(bz 256) 6.07(bz 256) 6.30(bz 512) 6.11(bz 128) 6.28(bz 256)
   keras (32,16,1) 6.16 6.3(adamax)
 
+  
 - 同上 資料月份OHE 8萬 22 normalize all
   (16,16) 6.81
 
@@ -137,6 +173,8 @@ early (16,16) 6.04 6.06 6.04
 -- no del
    6.02 6.06 6.06 6.07 6.04
 
+2 csv (report, birth) merge by 胎次
+- 6.08 6.03 6.17
 
 - 時序資料 同兩張表(report, birth)最佳 乳量沒OHE
   val=0.1 (16,16) 6.94
