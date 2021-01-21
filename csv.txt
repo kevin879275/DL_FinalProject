@@ -44,13 +44,116 @@
   (16,16) 5.90
   (16,16) 6.06
   (16,16) 6.04
+  add 配種精液 6.07
   xgb 6.11
 
-- 2個csv (report, birth) del 月齡 add 父親
+- 2個csv (report, birth) del 月齡 add 序列號, 乳牛編號
+  xgb 5.817
+
+- 2個csv (report, birth) del 月齡 add 父親精液
   xgb 5.94
 - 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號
-  xgb 5.79
+  xgb 5.79 5.78
 
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 最後配種精液
+  xgb 5.79
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號
+  xgb 5.76
+- 2個csv feas=3623(report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號
+  xgb 5.71 
+  rs=0 5.763 5.763
+  rs=2 5.746
+  rs=42  5.747
+  rs=11 5.78
+  rs=43 5.737
+  5.05 rs=13 5.720
+  tm=approx, 5.04, rs=13 6.14
+  4.83rs=13, maxdepth=7 5.773
+  5.11rs=49 5.753
+  5.03rs=39 5.731
+  5.03rs=35 5.749
+  rs=32 5.771
+  rs=28 5.720
+  rs=20 5.724
+  5.03序列號ohe rs=13 5.76
+  參數調整 xgb 5.92
+  600 ts0.99 0.83 RMSE3.62 5.567
+  蝶代數200 5.640
+  0.755 蝶代數300 RMSE4.37 5.59
+  0.797 蝶帶數500 RMSE3.98 5.5478
+  0.809 蝶代數600 RMSE3.85 5.5466
+  0.815      625  RMSE3.79 5.574
+  0.816 蝶代數650 RMSE3.78 5.5554 
+  0.822 蝶代數700 RMSE3.72 5.560
+  0.852 蝶代數1000 RMSE3.39 5.613 
+  
+  rs=13, prev, ep=100, 5.59
+  rs=13, prev, ep=200, 5.63
+  
+  all lbe 12features 
+  16f acc+sub cow
+  14  acc+sub cow sz 5.63
+  
+  add最近分娩、前次分娩月5.0rs=13 5.74
+  add第一次配種精液 4.94rs=13 5.81
+  add 過去乳量未來乳量 rs=11.86
+  add 配種精液 5.04rs=13 5.731
+  add 配種精液 5.72 
+
+- 2個csv (report, birth) del 月齡 序列號, 乳牛編號 labelEncoder add 父親精液, 母親乳牛編號
+  出生日期月 5.04rs=13 5.77
+  5.06rs=13 5.769
+
+- 2個csv features=3635 (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號, 最近分娩日期月
+  xgb 5.697(random) 5.76 5.779
+  5.01rs=13 5.739
+  5.17rs=28 5.742
+  5.05rs=20 5.759
+  5.11rs=42 5.735
+  5.15,rs=42,ts=0.7 5.768
+  5.11rs=615 5.741
+  5.08rs=4 5.737
+  5.03rs=616 5.751
+  add 配種精液 5.76 5.769
+
+- 2個csv features=3635 (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號,最近分娩日期日
+  5.13rs=42 5.756
+
+- 2個csv features=3635 (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號,出生日期月
+  xgb 5.754
+  rs=13 
+
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號,最近分娩日期月，最後配種日期月
+  xgb 5.80
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號,最近分娩日期月，出生日期月
+  xgb 5.72
+  5.02rs=13 5.726
+  
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號,最近分娩日期月，最後配種精液
+  xgb 5.80
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號，乳牛編號,最近分娩日期月 前次分娩日期月
+  xgb 5.73
+
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號，乳牛編號,第一次配種精液 出生日期+最近分娩日期月+前次分娩日期月
+  rs=13 5.731
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號，乳牛編號, 出生日期+最近分娩日期月+前次分娩日期月
+  5.0rs=13 5.748
+
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號OHE, 乳牛編號,最近分娩日期月
+  xgb 5.76
+
+--------------- birth feature try -------------
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號，乳牛編號,最近分娩日期月，犢牛體型
+  xgb 5.77
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號, 犢牛體型
+  xgb 5.761
+- 2個csv features=4484 (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號, 犢牛編號1,2
+  xgb 5.763
+- 2個csv features=3635 (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號, 分娩月
+  xgb 5.779
+- 2個csv (report, birth) del 月齡 add 父親精液, 母親乳牛編號, 序列號, 乳牛編號, 犢牛體型 最近分娩+前次分娩+乾乳日期月
+  5.11 rs=42 5.7615
+-------------------------------------------
 
 - 2個csv (report, birth) del 月齡,農場代號
   vaild=0.1 (16,16) 6.01
@@ -181,10 +284,6 @@ early (16,16) 6.04 6.06 6.04
   val=0.1 (32,16) 6.92
   乳牛編號OHE (32,16) 6.92 
   乳牛編號OHE (16,16) 7.07
-
-minmax正規化 + OHE + NA填平均
-- 2個csv (report, birth)
-   350 epoch (16,16) 8.07
 
 ## pytorch 
 - 4個
